@@ -9,4 +9,9 @@ class CarModel extends Model
 {
     /** @use HasFactory<\Database\Factories\CarModelFactory> */
     use HasFactory;
+
+    public function carBrand()
+    {
+        return $this->belongsTo(CarBrand::class, 'brand_id');
+    }
 }

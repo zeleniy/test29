@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCarModelRequest;
 use App\Http\Requests\UpdateCarModelRequest;
+use App\Http\Resources\CarModelCollection;
 use App\Models\CarModel;
 
 class CarModelController extends Controller
@@ -13,7 +14,7 @@ class CarModelController extends Controller
      */
     public function index()
     {
-        //
+        return new CarModelCollection(CarModel::with('carBrand')->orderBy('id')->cursorPaginate(10));
     }
 
     /**

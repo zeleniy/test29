@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CarBrand;
+use App\Models\CarModel;
 use Illuminate\Database\Seeder;
 
 class CarModelSeeder extends Seeder
@@ -10,8 +11,15 @@ class CarModelSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        //
+        $brands = CarBrand::all();
+
+        $brands->each(function ($brand) {
+            CarModel::factory()
+                ->count(\rand(0, 3))
+                ->for($brand)
+                ->create();
+        });
     }
 }
