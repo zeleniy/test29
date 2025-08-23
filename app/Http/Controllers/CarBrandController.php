@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCarBrandRequest;
 use App\Http\Requests\UpdateCarBrandRequest;
+use App\Http\Resources\CarBrandCollection;
 use App\Models\CarBrand;
 
 class CarBrandController extends Controller
@@ -13,7 +14,7 @@ class CarBrandController extends Controller
      */
     public function index()
     {
-        //
+        return new CarBrandCollection(CarBrand::orderBy('id')->cursorPaginate(10));
     }
 
     /**

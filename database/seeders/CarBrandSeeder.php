@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CarBrand;
 use Illuminate\Database\Seeder;
 
 class CarBrandSeeder extends Seeder
@@ -12,6 +12,6 @@ class CarBrandSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        CarBrand::factory()->count(15)->create();
     }
 }

@@ -17,7 +17,7 @@ class CarBrandFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => \join(' ', fake()->words(\rand(1, 3))),
         ];
     }
 }
