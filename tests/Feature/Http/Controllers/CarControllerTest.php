@@ -14,7 +14,6 @@ class CarControllerTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Test models listing.
      * @return void
      */
     public function testIndex(): void
@@ -69,6 +68,30 @@ class CarControllerTest extends TestCase
                     ->whereType('year', ['integer', 'null'])
                     ->whereType('mileage', ['integer', 'null'])
                     ->whereType('color', ['string', 'null'])
+            )
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function testShow(): void
+    {
+        $brand = CarBrand::factory()->create();
+        $model = CarModel::factory()->create(['brand_id' => $brand->id]);
+        $car   = Car::factory()->for($model)->create();
+
+        $response = $this->get('/cars/' . $car->id);
+
+        $response->assertStatus(200);
+
+        $response->assertJson(fn(AssertableJson $json) =>
+            $json->has('data', fn(AssertableJson $json) =>
+                $json->where('brand', $brand->name)
+                    ->where('model', $model->name)
+                    ->where('year', $car->year)
+                    ->where('mileage', $car->mileage)
+                    ->where('color', $car->color)
             )
         );
     }

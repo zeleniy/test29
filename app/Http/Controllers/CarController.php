@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Http\Resources\CarCollection;
+use App\Http\Resources\CarResource;
 use App\Models\Car;
 
 class CarController extends Controller
@@ -38,7 +39,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        return new CarResource($car->load('carModel.carBrand'));
     }
 
     /**
