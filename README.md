@@ -36,6 +36,10 @@
     ```
     cp .env.development .env
     ```
+1. Настроить git-хуки:
+    ```
+    git config core.hooksPath git-hooks
+    ```
 1. Запустить docker:
     ```
     ./vendor/bin/sail up -d
@@ -76,3 +80,5 @@
 * Формат сообщений для коммитов соответствует [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 * Классы моделей генерятся через [reliese/laravel](https://github.com/reliese/laravel) ([я писал про этот инструмент Хабре](https://habr.com/ru/articles/861584/)).
 * Для быстрого старта был использован [Laravel Sail](https://laravel.com/docs/12.x/sail)
+* Git-хуки перенесены в корень проекта в папку `git-hooks`. Хуки включают в себя:
+  * Запуск [Laravel Pint](https://laravel.com/docs/12.x/pint) для приведения стиля кодирования к общему виду.

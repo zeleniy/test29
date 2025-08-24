@@ -1,0 +1,4 @@
+#
+# Run Laravel Pint
+#
+./vendor/bin/sail composer pint
