@@ -59,7 +59,7 @@
             "@php artisan test  --env=testing"
         ],
         "pint": [
-            "./vendor/bin/pint"
+            "./vendor/bin/pint --test -v"
         ]
     },
     "extra": {
