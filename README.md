@@ -46,7 +46,7 @@
     ```
 1. Накатить миграции:
     ```
-    ./vendor/bin/sail artisan test --env=testing
+    ./vendor/bin/sail artisan migrate --env=testing
     ```
 1. Запустить тесты:
     ```
@@ -57,7 +57,7 @@
 
 1. Накатить миграции:
     ```
-    ./vendor/bin/sail artisan test
+    ./vendor/bin/sail artisan migrate
     ```
 1. Наполнить БД тестовыми данными:
     ```
