@@ -95,4 +95,19 @@ class CarControllerTest extends TestCase
             )
         );
     }
+
+    /**
+     * @return void
+     */
+    public function testDestroy(): void
+    {
+        $car = Car::factory()->for(CarModel::factory()->create([
+            'brand_id' => CarBrand::factory()->create()
+        ]))->create();
+
+        $response = $this->delete('/api/cars/' . $car->id);
+
+        $response->assertStatus(204);
+        $this->assertDatabaseMissing($car);
+    }
 }
