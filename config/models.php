@@ -154,7 +154,7 @@ return [
         |
         */
 
-        'per_page' => 15,
+        'per_page' => 10,
 
         /*
         |--------------------------------------------------------------------------
@@ -170,7 +170,7 @@ return [
         |
         */
 
-        'base_files' => false,
+        'base_files' => true,
 
         /*
         |--------------------------------------------------------------------------
@@ -183,7 +183,7 @@ return [
         |
         */
 
-        'snake_attributes' => true,
+        'snake_attributes' => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -196,7 +196,7 @@ return [
         |
         */
 
-        'indent_with_space' => 0,
+        'indent_with_space' => 4,
 
         /*
         |--------------------------------------------------------------------------
@@ -265,6 +265,7 @@ return [
 
         'casts' => [
             '*_json' => 'json',
+            'year'   => 'integer',
         ],
 
         /*
@@ -285,6 +286,12 @@ return [
             'password_resets',
             'personal_access_tokens',
             'password_reset_tokens',
+            'cache',
+            'cache_locks',
+            'job_batches',
+            'jobs',
+            'sessions',
+            'users',
         ],
 
         /*
@@ -393,7 +400,7 @@ return [
          | that helps to avoid typos in strings when typing field names and allows to use
          | code competition with available model's field names.
          */
-        'with_property_constants' => false,
+        'with_property_constants' => true,
 
         /*
          |--------------------------------------------------------------------------
@@ -460,7 +467,7 @@ return [
         | NOTE: This requires PHP 7.0 or later.
         |
         */
-        'enable_return_types' => false,
+        'enable_return_types' => true,
     ],
 
     /*

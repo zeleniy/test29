@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class CarBrand extends Model
+class CarBrand extends \App\Models\Base\CarBrand
 {
     /** @use HasFactory<\Database\Factories\CarBrandFactory> */
     use HasFactory;

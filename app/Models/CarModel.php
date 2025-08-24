@@ -3,15 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class CarModel extends Model
+class CarModel extends \App\Models\Base\CarModel
 {
     /** @use HasFactory<\Database\Factories\CarModelFactory> */
     use HasFactory;
-
-    public function carBrand()
-    {
-        return $this->belongsTo(CarBrand::class, 'brand_id');
-    }
 }
