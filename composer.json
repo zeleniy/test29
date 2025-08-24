@@ -55,7 +55,8 @@
         ],
         "test": [
             "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "@php artisan migrate:fresh --env=testing",
+            "@php artisan test  --env=testing"
         ],
         "pint": [
             "./vendor/bin/pint"

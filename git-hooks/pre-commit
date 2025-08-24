@@ -1,4 +1,24 @@
+#!/bin/bash
+
+#
+# Print error.
+#
+function error_exit {
+    echo "Error: $1"
+    exit 1
+}
+
 #
 # Run Laravel Pint
 #
-./vendor/bin/sail composer pint
+echo "Running Laravel Pint..."
+./vendor/bin/sail composer pint || error_exit "Laravel Pint failed"
+
+#
+# Run tests
+#
+echo "Running tests..."
+./vendor/bin/sail composer test || error_exit "Tests failed"
+
+echo "All checks passed!"
+exit 0
