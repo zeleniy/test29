@@ -18,9 +18,9 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
-            'year'    => $this->faker->boolean ? \rand(Car::YEAR_MIN, now()->year) : null,
+            'year' => $this->faker->boolean ? \rand(Car::YEAR_MIN, now()->year) : null,
             'mileage' => $this->faker->boolean ? \rand(Car::MILEAGE_MIN, Car::MILEAGE_MAX) : null,
-            'color'   => $this->faker->boolean ? $this->faker->colorName : null,
+            'color' => $this->faker->boolean ? $this->faker->colorName : null,
         ];
     }
 }

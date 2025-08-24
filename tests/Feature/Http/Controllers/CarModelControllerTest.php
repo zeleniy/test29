@@ -14,30 +14,25 @@ class CarModelControllerTest extends TestCase
 
     /**
      * Test models listing.
-     * @return void
      */
-    public function testIndex(): void
+    public function test_index(): void
     {
         CarModel::factory()->count(15)->for(CarBrand::factory()->create())->create();
         $response = $this->get('/api/models');
 
         $response->assertStatus(200);
 
-        $response->assertJson(fn(AssertableJson $json) =>
-            $json->has('meta', fn(AssertableJson $json) =>
-                $json->whereType('path', 'string')
-                    ->where('per_page', 10)
-                    ->whereNull('prev_cursor')
-                    ->whereType('next_cursor', 'string')
-                )->has('links', fn(AssertableJson $json) =>
-                    $json->whereNull('first')
-                        ->whereNull('last')
-                        ->whereNull('prev')
-                        ->whereType('next', 'string')
-                )->has('data', 10, fn(AssertableJson $json) =>
-                    $json->whereType('name', 'string')
-                        ->whereType('brand', 'string')
-                )
+        $response->assertJson(fn (AssertableJson $json) => $json->has('meta', fn (AssertableJson $json) => $json->whereType('path', 'string')
+            ->where('per_page', 10)
+            ->whereNull('prev_cursor')
+            ->whereType('next_cursor', 'string')
+        )->has('links', fn (AssertableJson $json) => $json->whereNull('first')
+            ->whereNull('last')
+            ->whereNull('prev')
+            ->whereType('next', 'string')
+        )->has('data', 10, fn (AssertableJson $json) => $json->whereType('name', 'string')
+            ->whereType('brand', 'string')
+        )
         );
 
         $nextPageLink = $response->json('links.next');
@@ -45,21 +40,17 @@ class CarModelControllerTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertJson(fn(AssertableJson $json) =>
-            $json->has('meta', fn(AssertableJson $json) =>
-                $json->whereType('path', 'string')
-                    ->where('per_page', 10)
-                    ->whereType('prev_cursor', 'string')
-                    ->whereNull('next_cursor')
-                )->has('links', fn(AssertableJson $json) =>
-                    $json->whereNull('first')
-                        ->whereNull('last')
-                        ->whereType('prev', 'string')
-                        ->whereNull('next')
-                )->has('data', 5, fn(AssertableJson $json) =>
-                    $json->whereType('name', 'string')
-                        ->whereType('brand', 'string')
-                )
+        $response->assertJson(fn (AssertableJson $json) => $json->has('meta', fn (AssertableJson $json) => $json->whereType('path', 'string')
+            ->where('per_page', 10)
+            ->whereType('prev_cursor', 'string')
+            ->whereNull('next_cursor')
+        )->has('links', fn (AssertableJson $json) => $json->whereNull('first')
+            ->whereNull('last')
+            ->whereType('prev', 'string')
+            ->whereNull('next')
+        )->has('data', 5, fn (AssertableJson $json) => $json->whereType('name', 'string')
+            ->whereType('brand', 'string')
+        )
         );
     }
 }

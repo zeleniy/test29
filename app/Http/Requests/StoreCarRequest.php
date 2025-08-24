@@ -24,9 +24,9 @@ class StoreCarRequest extends FormRequest
     {
         return [
             'model_id' => 'required|integer|exists:car_models,id',
-            'year'     => 'nullable|integer|min:' . Car::YEAR_MIN . '|max:' . now()->year,
-            'mileage'  => 'nullable|integer|min:' . Car::MILEAGE_MIN . '|max:' . Car::MILEAGE_MAX,
-            'color'    => 'nullable|string|max:' . Car::COLOR_MAX_LENGTH,
+            'year' => 'nullable|integer|min:'.Car::YEAR_MIN.'|max:'.now()->year,
+            'mileage' => 'nullable|integer|min:'.Car::MILEAGE_MIN.'|max:'.Car::MILEAGE_MAX,
+            'color' => 'nullable|string|max:'.Car::COLOR_MAX_LENGTH,
         ];
     }
 }

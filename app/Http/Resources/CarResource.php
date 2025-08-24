@@ -16,11 +16,11 @@ class CarResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'brand'   => $this->whenLoaded('carModel', fn () => $this->carModel->carBrand->name),
-            'model'   => $this->whenLoaded('carModel', fn () => $this->carModel->name),
-            'year'    => $this->resource->year,
+            'brand' => $this->whenLoaded('carModel', fn () => $this->carModel->carBrand->name),
+            'model' => $this->whenLoaded('carModel', fn () => $this->carModel->name),
+            'year' => $this->resource->year,
             'mileage' => $this->resource->mileage,
-            'color'   => $this->resource->color,
+            'color' => $this->resource->color,
         ];
     }
 }

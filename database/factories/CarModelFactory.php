@@ -17,7 +17,7 @@ class CarModelFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => \join(' ', $this->faker->words(\rand(1, 2))),
+            'name' => \implode(' ', $this->faker->words(\rand(1, 2))),
         ];
     }
 }
