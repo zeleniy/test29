@@ -16,7 +16,7 @@ class CarModelControllerTest extends TestCase
      * Test models listing.
      * @return void
      */
-    public function test_example(): void
+    public function testIndex(): void
     {
         CarModel::factory()->count(15)->for(CarBrand::factory()->create())->create();
         $response = $this->get('/models');
@@ -35,8 +35,8 @@ class CarModelControllerTest extends TestCase
                         ->whereNull('prev')
                         ->whereType('next', 'string')
                 )->has('data', 10, fn(AssertableJson $json) =>
-                    $json->has('name')
-                        ->has('brand')
+                    $json->whereType('name', 'string')
+                        ->whereType('brand', 'string')
                 )
         );
 
@@ -57,8 +57,8 @@ class CarModelControllerTest extends TestCase
                         ->whereType('prev', 'string')
                         ->whereNull('next')
                 )->has('data', 5, fn(AssertableJson $json) =>
-                    $json->has('name')
-                        ->has('brand')
+                    $json->whereType('name', 'string')
+                        ->whereType('brand', 'string')
                 )
         );
     }

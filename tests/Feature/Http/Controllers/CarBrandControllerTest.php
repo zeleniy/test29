@@ -35,7 +35,7 @@ class CarBrandControllerTest extends TestCase
                         ->whereNull('prev')
                         ->whereType('next', 'string')
                 )->has('data', 10, fn(AssertableJson $json) =>
-                    $json->has('name')
+                    $json->whereType('name', 'string')
                 )
         );
 
@@ -56,7 +56,7 @@ class CarBrandControllerTest extends TestCase
                         ->whereType('prev', 'string')
                         ->whereNull('next')
                 )->has('data', 5, fn(AssertableJson $json) =>
-                    $json->has('name')
+                    $json->whereType('name', 'string')
                 )
         );
     }
