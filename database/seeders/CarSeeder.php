@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Car;
+use App\Models\CarModel;
 use Illuminate\Database\Seeder;
 
 class CarSeeder extends Seeder
@@ -12,6 +13,13 @@ class CarSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $models = CarModel::all();
+
+        $models->each(function ($model) {
+            Car::factory()
+                ->count(\rand(0, 3))
+                ->for($model)
+                ->create();
+        });
     }
 }
