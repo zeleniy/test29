@@ -48,6 +48,13 @@ class Car extends Model
         self::UPDATED_AT => 'datetime'
     ];
 
+    protected $fillable = [
+        self::MODEL_ID,
+        self::YEAR,
+        self::MILEAGE,
+        self::COLOR
+    ];
+
     public function carModel(): BelongsTo
     {
         return $this->belongsTo(CarModel::class, \App\Models\Car::MODEL_ID);

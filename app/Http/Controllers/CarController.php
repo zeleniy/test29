@@ -31,7 +31,9 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
-        //
+        return new CarResource(
+            Car::create($request->validated())->load('carModel.carBrand')
+        );
     }
 
     /**

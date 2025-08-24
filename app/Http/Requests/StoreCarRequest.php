@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Car;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCarRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreCarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,10 @@ class StoreCarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'model_id' => 'required|integer|exists:car_models,id',
+            'year'     => 'nullable|integer|min:' . Car::YEAR_MIN . '|max:' . now()->year,
+            'mileage'  => 'nullable|integer|min:' . Car::MILEAGE_MIN . '|max:' . Car::MILEAGE_MAX,
+            'color'    => 'nullable|string|max:' . Car::COLOR_MAX_LENGTH,
         ];
     }
 }

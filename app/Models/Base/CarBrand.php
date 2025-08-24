@@ -40,6 +40,10 @@ class CarBrand extends Model
         self::UPDATED_AT => 'datetime'
     ];
 
+    protected $fillable = [
+        self::NAME
+    ];
+
     public function carModels(): HasMany
     {
         return $this->hasMany(CarModel::class, CarModel::BRAND_ID);

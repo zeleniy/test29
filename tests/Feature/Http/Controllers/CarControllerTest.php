@@ -110,4 +110,70 @@ class CarControllerTest extends TestCase
         $response->assertStatus(204);
         $this->assertDatabaseMissing($car);
     }
+
+    /**
+     * @return void
+     */
+    public function testStoreWithValidData(): void
+    {
+        $brand = CarBrand::factory()->create();
+        $model = CarModel::factory()->create(['brand_id' => $brand->id]);
+        $car   = Car::factory()->make();
+
+        $response = $this->postJson('/api/cars/', [
+            'model_id' => $model->id,
+            'year'     => $car->year,
+            'mileage'  => $car->mileage,
+            'color'    => $car->color,
+        ]);
+
+        $response->assertStatus(201);
+
+        $response->assertJson(fn(AssertableJson $json) =>
+            $json->has('data', fn(AssertableJson $json) =>
+                $json->where('brand', $brand->name)
+                    ->where('model', $model->name)
+                    ->where('year', $car->year)
+                    ->where('mileage', $car->mileage)
+                    ->where('color', $car->color)
+            )
+        );
+
+        $this->assertDatabaseHas($response->json('data.id'));
+    }
+
+    /**
+     * @return void
+     */
+    public function testStoreWithInvalidData(): void
+    {
+        $model = CarModel::factory()->create([
+            'brand_id' => CarBrand::factory()->create()
+        ]);
+
+        $carsInDb = Car::count();
+
+        $response = $this->postJson('/api/cars/', [
+            'model_id' => $model->id,
+            'year'     => now()->year + 1,
+            'mileage'  => Car::MILEAGE_MAX + 1,
+            'color'    => 21,
+        ]);
+
+        $response->assertStatus(422);
+
+        $response->assertJson(fn(AssertableJson $json) =>
+            $json->whereType('message', 'string')
+                ->has('errors', fn(AssertableJson $errors) =>
+                    $errors->has('year', 1)
+                        ->whereType('year.0', 'string')
+                        ->has('mileage', 1)
+                        ->whereType('mileage.0', 'string')
+                        ->has('color', 1)
+                        ->whereType('color.0', 'string')
+                )
+        );
+
+        $this->assertEquals($carsInDb, Car::count());
+    }
 }

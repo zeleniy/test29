@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Car;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,8 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
-            'year'    => $this->faker->boolean ? $this->faker->year : null,
-            'mileage' => $this->faker->boolean ? \rand(1, 725_000) : null,
+            'year'    => $this->faker->boolean ? \rand(Car::YEAR_MIN, now()->year) : null,
+            'mileage' => $this->faker->boolean ? \rand(Car::MILEAGE_MIN, Car::MILEAGE_MAX) : null,
             'color'   => $this->faker->boolean ? $this->faker->colorName : null,
         ];
     }
