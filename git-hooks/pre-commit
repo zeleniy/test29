@@ -15,6 +15,12 @@ echo "Running Laravel Pint..."
 ./vendor/bin/sail composer pint || error_exit "Laravel Pint failed"
 
 #
+# Run Psalm
+#
+echo "Running Psalm..."
+./vendor/bin/sail composer psalm || error_exit "Psalm failed"
+
+#
 # Run tests
 #
 echo "Running tests..."

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="6.13.1@1e3b7f0a8ab32b23197b91107adc0a7ed8a05b51">
+  <file src="app/Http/Controllers/CarBrandController.php">
+    <PossiblyUnusedParam>
+      <code><![CDATA[$carBrand]]></code>
+      <code><![CDATA[$carBrand]]></code>
+      <code><![CDATA[$carBrand]]></code>
+      <code><![CDATA[$carBrand]]></code>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$request]]></code>
+    </PossiblyUnusedParam>
+    <UnusedClass>
+      <code><![CDATA[CarBrandController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Http/Controllers/CarController.php">
+    <PossiblyUnusedParam>
+      <code><![CDATA[$car]]></code>
+    </PossiblyUnusedParam>
+    <UnusedClass>
+      <code><![CDATA[CarController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Http/Controllers/CarModelController.php">
+    <PossiblyUnusedParam>
+      <code><![CDATA[$carModel]]></code>
+      <code><![CDATA[$carModel]]></code>
+      <code><![CDATA[$carModel]]></code>
+      <code><![CDATA[$carModel]]></code>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$request]]></code>
+    </PossiblyUnusedParam>
+    <UnusedClass>
+      <code><![CDATA[CarModelController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Http/Requests/StoreCarBrandRequest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorize]]></code>
+      <code><![CDATA[rules]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Requests/StoreCarModelRequest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorize]]></code>
+      <code><![CDATA[rules]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Requests/StoreCarRequest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorize]]></code>
+      <code><![CDATA[rules]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Requests/UpdateCarBrandRequest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorize]]></code>
+      <code><![CDATA[rules]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Requests/UpdateCarModelRequest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorize]]></code>
+      <code><![CDATA[rules]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Requests/UpdateCarRequest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorize]]></code>
+      <code><![CDATA[rules]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Http/Resources/CarBrandCollection.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function toArray(Request $request): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="app/Http/Resources/CarBrandResource.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function toArray(Request $request): array]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[CarBrandResource]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Http/Resources/CarCollection.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function toArray(Request $request): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="app/Http/Resources/CarModelCollection.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function toArray(Request $request): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="app/Http/Resources/CarModelResource.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function toArray(Request $request): array]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[CarModelResource]]></code>
+    </UnusedClass>
+  </file>
+  <file src="app/Http/Resources/CarResource.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function toArray(Request $request): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="app/Models/Base/Car.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[carModel]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Models/Base/CarBrand.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[carModels]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Models/Base/CarModel.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[carBrand]]></code>
+      <code><![CDATA[cars]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="app/Models/User.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function casts(): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="app/Providers/AppServiceProvider.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function register(): void]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[AppServiceProvider]]></code>
+    </UnusedClass>
+  </file>
+  <file src="database/factories/CarBrandFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function definition(): array]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[CarBrandFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="database/factories/CarFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function definition(): array]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[CarFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="database/factories/CarModelFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function definition(): array]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[CarModelFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="database/factories/UserFactory.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function definition(): array]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[unverified]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedClosureParam>
+      <code><![CDATA[$attributes]]></code>
+    </UnusedClosureParam>
+  </file>
+  <file src="database/seeders/CarBrandSeeder.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[run]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="database/seeders/CarModelSeeder.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[run]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="database/seeders/CarSeeder.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[run]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="database/seeders/DatabaseSeeder.php">
+    <UnusedClass>
+      <code><![CDATA[DatabaseSeeder]]></code>
+    </UnusedClass>
+  </file>
+</files>

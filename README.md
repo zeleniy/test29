@@ -82,4 +82,5 @@
 * Для быстрого старта был использован [Laravel Sail](https://laravel.com/docs/12.x/sail)
 * Git-хуки перенесены в корень проекта в папку `git-hooks`. Хуки включают в себя:
   * Запуск [Laravel Pint](https://laravel.com/docs/12.x/pint) для приведения стиля кодирования к общему виду.
+  * Запуск [Psalm](https://psalm.dev/). Все найденные при первом запуске Psalm ошибки не исправлены и хранятся в baseline-файле `psalm-baseline.xml`
   * Запуск тестов.
