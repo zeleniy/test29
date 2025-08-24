@@ -57,7 +57,9 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-        //
+        $car->update($request->validated());
+
+        return new CarResource($car->load('carModel.carBrand'));
     }
 
     /**

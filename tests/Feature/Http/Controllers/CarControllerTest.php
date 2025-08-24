@@ -176,4 +176,35 @@ class CarControllerTest extends TestCase
 
         $this->assertEquals($carsInDb, Car::count());
     }
+
+    /**
+     * @return void
+     */
+    public function testUpdate(): void
+    {
+        $brand = CarBrand::factory()->create();
+        $model = CarModel::factory()->create(['brand_id' => $brand->id]);
+        $car   = Car::factory()->for($model)->create();
+
+        $newYear = \rand(Car::YEAR_MIN, now()->year);
+        $newMileage = \rand(Car::MILEAGE_MIN, Car::MILEAGE_MAX);
+
+        $response = $this->putJson('/api/cars/' . $car->id, [
+            'year'     => $newYear,
+            'mileage'  => $newMileage,
+            'color'    => 'MyColor',
+        ]);
+
+        $response->assertStatus(200);
+
+        $response->assertJson(fn(AssertableJson $json) =>
+            $json->has('data', fn(AssertableJson $json) =>
+                $json->where('brand', $brand->name)
+                    ->where('model', $model->name)
+                    ->where('year', $newYear)
+                    ->where('mileage', $newMileage)
+                    ->where('color', 'MyColor')
+            )
+        );
+    }
 }
