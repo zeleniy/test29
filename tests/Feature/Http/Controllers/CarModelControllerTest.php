@@ -19,7 +19,7 @@ class CarModelControllerTest extends TestCase
     public function testIndex(): void
     {
         CarModel::factory()->count(15)->for(CarBrand::factory()->create())->create();
-        $response = $this->get('/models');
+        $response = $this->get('/api/models');
 
         $response->assertStatus(200);
 

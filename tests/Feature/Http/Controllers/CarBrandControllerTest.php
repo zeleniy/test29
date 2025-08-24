@@ -19,7 +19,7 @@ class CarBrandControllerTest extends TestCase
     {
         CarBrand::factory()->count(15)->create();
 
-        $response = $this->get('/brands');
+        $response = $this->get('/api/brands');
 
         $response->assertStatus(200);
 

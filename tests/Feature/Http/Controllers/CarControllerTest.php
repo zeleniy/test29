@@ -22,7 +22,7 @@ class CarControllerTest extends TestCase
             'brand_id' => CarBrand::factory()->create()
         ]))->create();
 
-        $response = $this->get('/cars');
+        $response = $this->get('/api/cars');
 
         $response->assertStatus(200);
 
@@ -81,7 +81,7 @@ class CarControllerTest extends TestCase
         $model = CarModel::factory()->create(['brand_id' => $brand->id]);
         $car   = Car::factory()->for($model)->create();
 
-        $response = $this->get('/cars/' . $car->id);
+        $response = $this->get('/api/cars/' . $car->id);
 
         $response->assertStatus(200);
 
