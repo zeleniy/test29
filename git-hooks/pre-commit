@@ -1,36 +1,78 @@
 #!/bin/bash
 
 #
+# Colors and font styles.
+#
+GREEN="\e[32m"
+RED="\e[31m"
+BOLD="\e[1m"
+RESET="\e[0m"
+GREEN_BG="\e[42m"
+RED_BG="\e[41m"
+
+#
 # Print error.
 #
 function error_exit {
-    echo "Error: $1"
+    printf "${RED_BG}${BOLD}\n\n BUILD FAILURE: $1\n${RESET}\n"
     exit 1
+}
+
+#
+# Counters.
+#
+current_step=1
+total_steps=4
+
+#
+# Print phase header.
+#
+function print_header {
+
+    local text="$1"
+    local width=$(tput cols)
+    local step_info="${current_step}/${total_steps}."
+    local full_text=" ${step_info} ${text} "
+    local padding=$(( (width - ${#full_text}) / 2 ))
+    local left_line=$(printf "%*s" "$padding" "" | tr ' ' '=')
+    local right_line=$(printf "%*s" "$((width - padding - ${#full_text}))" "" | tr ' ' '=')
+
+    printf "${BOLD}${left_line}%s${right_line}${RESET}\n" "$full_text"
+    current_step=$((current_step + 1))
 }
 
 #
 # Run PHP Magic Number Detector
 #
-echo "Running PHP Magic Number Detector..."
-./vendor/bin/sail composer phpmnd || error_exit "PHP Magic Number Detector failed"
+tool="PHP Magic Number Detector"
+print_header "$tool"
+./vendor/bin/sail composer phpmnd || error_exit "PHP Magic Number Detector"
+printf "\n${GREEN}✔${RESET} $tool\n"
 
 #
 # Run Laravel Pint
 #
-echo "Running Laravel Pint..."
-./vendor/bin/sail composer pint || error_exit "Laravel Pint failed"
+tool="Laravel Pint"
+print_header "$tool"
+./vendor/bin/sail composer pint || error_exit "Laravel Pint"
+printf "\n${GREEN}✔${RESET} $tool\n"
 
 #
 # Run Psalm
 #
-echo "Running Psalm..."
-./vendor/bin/sail composer psalm || error_exit "Psalm failed"
+tool="Psalm"
+print_header "$tool"
+./vendor/bin/sail composer psalm || error_exit "Psalm"
+printf "\n${GREEN}✔${RESET} $tool\n"
 
 #
 # Run tests
 #
-echo "Running tests..."
-./vendor/bin/sail composer test || error_exit "Tests failed"
+tool="PHPUnit"
+print_header "$tool"
+./vendor/bin/sail composer test || error_exit "Tests"
+printf "\n${GREEN}✔${RESET} $tool\n"
 
-echo "All checks passed!"
+printf "${GREEN_BG}${BOLD}\n\n BUILD SUCCESS\n${RESET}\n"
+
 exit 0
