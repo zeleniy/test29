@@ -81,6 +81,7 @@
 * Классы моделей генерятся через [reliese/laravel](https://github.com/reliese/laravel) ([я писал про этот инструмент Хабре](https://habr.com/ru/articles/861584/)).
 * Для быстрого старта был использован [Laravel Sail](https://laravel.com/docs/12.x/sail)
 * Git-хуки перенесены в корень проекта в папку `git-hooks`. Хуки включают в себя:
+  * Запуск [PHP Magic Number Detector](https://github.com/povils/phpmnd) для поиска магических чисел в коде.
   * Запуск [Laravel Pint](https://laravel.com/docs/12.x/pint) для приведения стиля кодирования к общему виду.
   * Запуск [Psalm](https://psalm.dev/). Все найденные при первом запуске Psalm ошибки не исправлены и хранятся в baseline-файле `psalm-baseline.xml`
   * Запуск тестов.

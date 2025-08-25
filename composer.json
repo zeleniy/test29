@@ -18,6 +18,7 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
         "phpunit/phpunit": "^11.5.3",
+        "povils/phpmnd": "^3.6",
         "reliese/laravel": "^1.4",
         "vimeo/psalm": "^6.13"
     },
@@ -63,6 +64,9 @@
         ],
         "psalm": [
             "./vendor/bin/psalm"
+        ],
+        "phpmnd": [
+            "./vendor/bin/phpmnd --exclude-path=vendor --strings --include-numeric-string --hint --progress ."
         ]
     },
     "extra": {

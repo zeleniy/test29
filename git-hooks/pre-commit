@@ -9,6 +9,12 @@ function error_exit {
 }
 
 #
+# Run PHP Magic Number Detector
+#
+echo "Running PHP Magic Number Detector..."
+./vendor/bin/sail composer phpmnd || error_exit "PHP Magic Number Detector failed"
+
+#
 # Run Laravel Pint
 #
 echo "Running Laravel Pint..."
